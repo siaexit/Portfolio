@@ -1,4 +1,3 @@
-// 小さな Node スクリプト: dist/index.html を dist/404.html にコピー（postbuild 用）
 const fs = require('fs')
 const path = require('path')
 
