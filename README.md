@@ -12,3 +12,6 @@
 
   ## ビルド（dist を生成）
   npm run build
+
+  npm run deploy
+

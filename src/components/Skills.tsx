@@ -3,19 +3,38 @@ import { motion } from 'motion/react';
 export function Skills() {
   const skillCategories = [
     {
-      title: 'UI/UXデザイン',
-      years: '8年以上',
-      description: 'Figma、Adobe XD、Photoshop、Illustrator、Sketchを使用したUI/UXデザイン。ユーザー中心のデザインアプローチとプロトタイピング。',
+      title: 'UI・UX',
+      years: '3年以上',
+      description: '要件整理からUI設計まで実装を前提としたデザインに対応します。',
+      points: [
+        '情報設計・画面設計',
+        'ユーザーフロー設計',
+        'デザインシステム構築・運用',
+      ],
+      tools: 'Figma / Adobe XD / Photoshop / Illustrator',
     },
     {
       title: 'フロントエンド',
-      years: '8年以上',
-      description: 'HTML、JavaScript、CSS、Sass/SCSSを基盤に、React、Vue3を活用したモダンなWebアプリケーション開発。',
+      years: '5年以上',
+      description: '要件理解を踏まえた保守性・拡張性の高いUI実装が強みです。',
+      points: [
+        'React / Vue を用いたフロントエンド開発',
+        'コンポーネント設計・再利用設計',
+        'API連携・状態管理',
+      ],
+      tools: 'HTML / CSS / Sass / JavaScript',
     },
     {
       title: 'バックエンド',
       years: '5年以上',
-      description: 'Java、SQL、Springを中心としたサーバーサイド開発。堅牢でスケーラブルなシステムの設計と実装。',
+      description: '小〜中規模案件を中心にフロントエンドと連動した開発が可能です。',
+      points: [
+        'Java / Spring を用いた開発',
+        'API設計',
+        'SQLによるデータ設計',
+        'フロントエンドとの仕様調整・連携実装',
+      ],
+      tools: '',
     },
   ];
 
@@ -46,9 +65,22 @@ export function Skills() {
                 <h3 className="text-xl text-gray-900">{category.title}</h3>
                 <span className="text-sm text-gray-500">{category.years}</span>
               </div>
-              <p className="text-gray-600 leading-relaxed text-sm">
+              <p className="text-gray-600 leading-relaxed text-sm mb-4">
                 {category.description}
               </p>
+              <ul className="space-y-2 mb-4">
+                {category.points.map((point, i) => (
+                  <li key={i} className="text-gray-600 text-sm flex items-start">
+                    <span className="text-gray-400 mr-2">・</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+              {category.tools && (
+                <p className="text-gray-500 text-xs mt-4 pt-4 border-t border-gray-100">
+                  {category.tools}
+                </p>
+              )}
             </motion.div>
           ))}
         </div>
