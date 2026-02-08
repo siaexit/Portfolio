@@ -44,7 +44,7 @@ export function Navigation() {
             }}
             className="text-gray-900 text-sm"
           >
-            山田 太郎
+            出口 史亜
           </a>
 
           {/* Desktop Navigation */}

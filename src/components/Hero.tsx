@@ -14,22 +14,25 @@ export function Hero() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-5xl md:text-7xl mb-8 text-gray-900">
-          　○○ ○○
+          出口 史亜
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl">
             UI/UX Designer & Frontend Engineer <br/>
             UI設計から実装まで一貫して行う<br/>
-            フロントエンドエンジニア
+            UI/UXデザイナー<br />
+            <br />
+            業務システム・管理画面を中心に<br />
+            ユーザーの業務フローを意識したUI設計を行っています。<br />
           </p>
           <p className ="mb-4 text-gray-600">
-          Frontend 8+ years / Backend 5+ years <br/>
+          UI/UX 3+ years / Frontend 5+ years / Backend 5+ years <br/>
           React・Vue・Spring
           </p>
 
           {/* <div className="flex space-x-6">
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:fumia.deguchi@rootage.co.jp"
               className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
             >
               メール

@@ -12,14 +12,14 @@ export function Contact() {
         >
           <h2 className="text-3xl md:text-4xl text-gray-900 mb-8">お問い合わせ</h2>
           <p className="text-gray-600 leading-relaxed mb-8 max-w-2xl">
-            現在、新しい機会やコラボレーションを募集しています。
+            新しい機会やコラボレーションを募集しています。
             一緒に仕事をしたい方は、お気軽にご連絡ください。
           </p>
           <a
-            href="mailto:your.email@example.com"
+            href="mailto:fumia.deguchi@rootage.co.jp"
             className="inline-block text-gray-900 hover:text-gray-600 transition-colors border-b border-gray-900 hover:border-gray-600 pb-0.5"
           >
-            your.email@example.com
+            fumia.deguchi@rootage.co.jp
           </a>
         </motion.div>
       </div>
