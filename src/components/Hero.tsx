@@ -18,7 +18,6 @@ export function Hero() {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl">
-            UI/UX Designer & Frontend Engineer <br/>
             UI設計から実装まで一貫して行う<br/>
             UI/UXデザイナー<br />
             <br />
