@@ -15,12 +15,12 @@ export function Contact() {
             新しい機会やコラボレーションを募集しています。
             一緒に仕事をしたい方は、お気軽にご連絡ください。
           </p>
-          <a
+          {/* <a
             href="mailto:fumia.deguchi@rootage.co.jp"
             className="inline-block text-gray-900 hover:text-gray-600 transition-colors border-b border-gray-900 hover:border-gray-600 pb-0.5"
           >
             fumia.deguchi@rootage.co.jp
-          </a>
+          </a> */}
         </motion.div>
       </div>
     </section>

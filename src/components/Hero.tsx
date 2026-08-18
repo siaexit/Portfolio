@@ -31,12 +31,6 @@ export function Hero() {
 
           {/* <div className="flex space-x-6">
             <a
-              href="mailto:fumia.deguchi@rootage.co.jp"
-              className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
-            >
-              メール
-            </a>
-            <a
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
