@@ -36,3 +36,8 @@
 
   npm run deploy
 
+  ## Figma MCP の設定
+  `.vscode/mcp.json` に Figma の公式リモート MCP サーバーを設定しています。
+  VS Code でこのワークスペースを開き、`.vscode/mcp.json` の `figma` サーバーの上に表示される **Start** をクリックしてください。
+  初回起動時にブラウザーで Figma の認証画面が開くので、アクセスを許可してください。
+  認証後、Figma のデザインファイルやフレームへのリンクをチャットに渡すと、デザイン情報を参照できます。

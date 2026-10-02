@@ -7,7 +7,6 @@
       <Skills />
       <Projects />
       <Experience />
-      <Contact />
     </main>
     <footer class="bg-white text-gray-500 py-8 border-t border-gray-100">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

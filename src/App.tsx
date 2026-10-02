@@ -3,7 +3,6 @@ import { Hero } from './components/Hero';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Experience } from './components/Experience';
-import { Contact } from './components/Contact';
 
 export default function App() {
   return (
@@ -14,7 +13,6 @@ export default function App() {
         <Skills />
         <Projects />
         <Experience />
-        <Contact />
       </main>
       <footer className="bg-white text-gray-500 py-8 border-t border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

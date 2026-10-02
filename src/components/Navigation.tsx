@@ -17,7 +17,6 @@ export function Navigation() {
     { label: 'スキル', href: '#skills' },
     { label: '実績', href: '#projects' },
     { label: '経歴', href: '#experience' },
-    { label: 'お問い合わせ', href: '#contact' },
   ];
 
   const scrollToSection = (href: string) => {
