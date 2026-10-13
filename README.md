@@ -1,43 +1,37 @@
 
   # ポートフォリオ作成
 
-  ## リポジトリ構成について
+## BtoB・BtoCページの公開構成
 
-  このリポジトリには、役割の異なる2つのプロジェクトが共存しています。
+このリポジトリでは、2つのブランチのReact/Viteアプリを1つのGitHub Pagesサイトにまとめて公開します。
 
-  | ディレクトリ | 役割 | 技術スタック | 公開状況 |
-  | --- | --- | --- | --- |
-  | リポジトリ直下（本ディレクトリ） | **Figma Makeのデザイン取り込み用**。Figma Makeが生成するReactコードの受け皿として使用し、本番公開はしない | React + Vite | 非公開（取り込み作業場） |
-  | [`portfolio-nuxt-migration/`](./portfolio-nuxt-migration) | **本番公開用の正式実装** | Nuxt/Vue + Tailwind CSS | [GitHub Pages](https://siaexit.github.io/Portfolio/) で公開中 |
+| ページ | ソース | 公開URL |
+| --- | --- | --- |
+| BtoB | `main` ブランチ | [https://siaexit.github.io/Portfolio/](https://siaexit.github.io/Portfolio/) |
+| BtoC | `agents/figma-mcp-setup` ブランチ | [https://siaexit.github.io/Portfolio/btoc/](https://siaexit.github.io/Portfolio/btoc/) |
 
-  ### 運用フロー
-  1. Figmaでデザインを更新し、Figma Makeで本ディレクトリ（React/Vite）にコードを生成する
-  2. 生成されたReactコードをそのままマージせず、デザイン差分を確認する
-  3. 差分内容を [`portfolio-nuxt-migration/app/components/`](./portfolio-nuxt-migration/app/components) 配下のVueコンポーネントへ手動で反映する
-  4. `portfolio-nuxt-migration/` の変更を `main` ブランチへコミットし、[`deploy-nuxt.yml`](./.github/workflows/deploy-nuxt.yml) ワークフローを実行してGitHub Pagesへデプロイする
+[`deploy.yml`](./.github/workflows/deploy.yml) は両ブランチを取得して個別にビルドし、成果物を一つにまとめてGitHub Pagesへデプロイします。BtoC側はビルド時に `/Portfolio/btoc/` をベースパスとして指定するため、通常のローカル開発用設定は変わりません。
 
-  詳しくは [`portfolio-nuxt-migration/README.md`](./portfolio-nuxt-migration/README.md) を参照してください。
+### 初回設定と運用
+
+1. GitHubリポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定します。
+2. このワークフローを `main` に反映します。
+3. `agents/figma-mcp-setup` ブランチにも同じ `deploy.yml` をコミットしてGitHub（`origin`）へpushします。GitHub Actionsの `push` ワークフローは、対象ブランチにもワークフローファイルが存在する必要があります。
+4. 以降、どちらかのブランチへのpushで両方の最新内容をビルドして公開します。必要ならActions画面から手動実行もできます。
+
+`portfolio-nuxt-migration/` はNuxt版のプロジェクトとしてリポジトリ内に残っていますが、この2ページの公開ワークフローでは使用しません。
 
   ---
 
-  ## （以下、本ディレクトリ：React/Vite版の操作メモ）
+## ローカル開発
 
-  ## Node を v18 系に切り替え（nvm を使っている場合）
-  node -v
+各ブランチで依存をインストールし、開発サーバーを起動します。
 
-  ## 依存をインストール
-  npm ci
+```bash
+npm ci
+npm run dev
+```
 
-  ## 開発サーバ起動（ホットリロード）
-  npm run dev
+## Figma MCP の設定
 
-  ## ビルド（dist を生成）
-  npm run build
-
-  npm run deploy
-
-  ## Figma MCP の設定
-  `.vscode/mcp.json` に Figma の公式リモート MCP サーバーを設定しています。
-  VS Code でこのワークスペースを開き、`.vscode/mcp.json` の `figma` サーバーの上に表示される **Start** をクリックしてください。
-  初回起動時にブラウザーで Figma の認証画面が開くので、アクセスを許可してください。
-  認証後、Figma のデザインファイルやフレームへのリンクをチャットに渡すと、デザイン情報を参照できます。
+`.vscode/mcp.json` にFigmaの公式リモートMCPサーバーを設定しています。VS Codeでこのワークスペースを開き、`.vscode/mcp.json` の `figma` サーバーの上に表示される **Start** をクリックしてください。初回起動時にブラウザーでFigmaの認証画面が開くので、アクセスを許可してください。

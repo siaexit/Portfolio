@@ -1,16 +1,14 @@
-# ポートフォリオ（Nuxt/Vue版・本番実装）
+# ポートフォリオ（Nuxt/Vue版）
 
-このディレクトリが **本番公開用の正式実装** です。GitHub Pages（[https://siaexit.github.io/Portfolio/](https://siaexit.github.io/Portfolio/)）に公開されているのはこちらの内容です。
+このディレクトリにはNuxt/Vue版のポートフォリオを置いています。現在のGitHub Pagesデプロイでは、BtoBページに `main` ブランチ、BtoCページに `agents/figma-mcp-setup` ブランチのReact/Viteアプリを使用しており、このNuxtプロジェクトは公開対象ではありません。
 
-リポジトリ直下（親ディレクトリ）のReact/Vite版は、Figma Makeによるデザイン取り込み専用の作業場であり、本番公開はされていません。デザイン変更は親ディレクトリで生成された内容を確認したうえで、このディレクトリ配下の `.vue` コンポーネントへ手動で反映してください。詳細は[リポジトリ直下のREADME](../README.md)を参照してください。
+リポジトリの公開構成とデプロイ手順については[リポジトリ直下のREADME](../README.md)を参照してください。
 
-## デプロイ
-
-`main` ブランチへの変更後、GitHub Actionsの [`Deploy Nuxt to GitHub Pages`](../.github/workflows/deploy-nuxt.yml) ワークフローを手動実行（`workflow_dispatch`）するとGitHub Pagesへ反映されます。
+## ローカル開発
 
 ---
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Nuxtの使い方は[公式ドキュメント](https://nuxt.com/docs/getting-started/introduction)を参照してください。
 
 ## Setup
 
