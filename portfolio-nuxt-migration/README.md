@@ -1,12 +1,15 @@
 # ポートフォリオ（Nuxt/Vue版）
 
-このディレクトリにはNuxt/Vue版のポートフォリオを置いています。現在のGitHub Pagesデプロイでは、BtoBページに `main` ブランチ、BtoCページに `agents/figma-mcp-setup` ブランチのReact/Viteアプリを使用しており、このNuxtプロジェクトは公開対象ではありません。
+このディレクトリのNuxt/VueアプリがBtoCページの実装です。GitHub Pagesでは `agents/figma-mcp-setup` ブランチから取得し、[https://siaexit.github.io/Portfolio/btoc/](https://siaexit.github.io/Portfolio/btoc/) に公開します。
 
 リポジトリの公開構成とデプロイ手順については[リポジトリ直下のREADME](../README.md)を参照してください。
 
 ## ローカル開発
 
----
+```bash
+npm ci
+npm run dev
+```
 
 Nuxtの使い方は[公式ドキュメント](https://nuxt.com/docs/getting-started/introduction)を参照してください。
 

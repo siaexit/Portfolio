@@ -35,11 +35,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: '22.x'
           cache: npm
           cache-dependency-path: |
             btob/package-lock.json
-            btoc/package-lock.json
+            btoc/portfolio-nuxt-migration/package-lock.json
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -50,17 +50,19 @@ jobs:
           npm ci
           npm run build
 
-      - name: Install and build BtoC
-        working-directory: btoc
+      - name: Install and build BtoC Nuxt app
+        working-directory: btoc/portfolio-nuxt-migration
         run: |
           npm ci
-          npm run build -- --base=/Portfolio/btoc/
+          npx nuxt build --preset github_pages
+        env:
+          NUXT_APP_BASE_URL: /Portfolio/btoc/
 
       - name: Assemble site
         run: |
           mkdir -p site/btoc
           cp -a btob/dist/. site/
-          cp -a btoc/dist/. site/btoc/
+          cp -a btoc/portfolio-nuxt-migration/.output/public/. site/btoc/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

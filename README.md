@@ -3,14 +3,14 @@
 
 ## BtoB・BtoCページの公開構成
 
-このリポジトリでは、2つのブランチのReact/Viteアプリを1つのGitHub Pagesサイトにまとめて公開します。
+このリポジトリでは、`main` のReact/Viteアプリと `agents/figma-mcp-setup` のNuxtアプリを1つのGitHub Pagesサイトにまとめて公開します。
 
 | ページ | ソース | 公開URL |
 | --- | --- | --- |
 | BtoB | `main` ブランチ | [https://siaexit.github.io/Portfolio/](https://siaexit.github.io/Portfolio/) |
 | BtoC | `agents/figma-mcp-setup` ブランチ | [https://siaexit.github.io/Portfolio/btoc/](https://siaexit.github.io/Portfolio/btoc/) |
 
-[`deploy.yml`](./.github/workflows/deploy.yml) は両ブランチを取得して個別にビルドし、成果物を一つにまとめてGitHub Pagesへデプロイします。BtoC側はビルド時に `/Portfolio/btoc/` をベースパスとして指定するため、通常のローカル開発用設定は変わりません。
+[`deploy.yml`](./.github/workflows/deploy.yml) は両ブランチを取得して個別にビルドし、成果物を一つにまとめてGitHub Pagesへデプロイします。BtoBはリポジトリ直下のReact/Viteアプリ、BtoCは `portfolio-nuxt-migration/` のNuxtアプリです。BtoCのビルド時には `/Portfolio/btoc/` をベースパスに指定し、ローカル開発時の `http://localhost:3000/` には影響させません。
 
 ### 初回設定と運用
 
@@ -19,15 +19,21 @@
 3. `agents/figma-mcp-setup` ブランチにも同じ `deploy.yml` をコミットしてGitHub（`origin`）へpushします。GitHub Actionsの `push` ワークフローは、対象ブランチにもワークフローファイルが存在する必要があります。
 4. 以降、どちらかのブランチへのpushで両方の最新内容をビルドして公開します。必要ならActions画面から手動実行もできます。
 
-`portfolio-nuxt-migration/` はNuxt版のプロジェクトとしてリポジトリ内に残っていますが、この2ページの公開ワークフローでは使用しません。
-
-  ---
+---
 
 ## ローカル開発
 
-各ブランチで依存をインストールし、開発サーバーを起動します。
+BtoB（React/Vite）はリポジトリ直下で起動します。
 
 ```bash
+npm ci
+npm run dev
+```
+
+BtoC（Nuxt）はNuxtアプリのディレクトリで起動します。
+
+```bash
+cd portfolio-nuxt-migration
 npm ci
 npm run dev
 ```
