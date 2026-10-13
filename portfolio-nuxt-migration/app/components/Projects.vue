@@ -12,10 +12,8 @@ const projects = [
     year: '2020',
     role: 'UI/UI設計 / フロントエンド実装',
     description:
-      '既存ECサイトの管理画面において、ステータス管理機能のUI設計およびフロントエンド実装を担当。',
-    description2:
-      'デザインガイドラインを整理し、再利用可能なコンポーネントとして実装しました。',
-    skiles: 'HTML / CSS / JavaScript / Figma / Adobe XD',
+      '既存ECサイトの管理画面において、ステータス管理機能のUI設計およびフロントエンド実装を担当。デザインガイドラインを整理し、再利用可能なコンポーネントとして実装しました。',
+    tags: ['HTML', 'CSS', 'JavaScript', 'Figma', 'Adobe XD'],
     image: ecSiteImage,
   },
   {
@@ -23,10 +21,8 @@ const projects = [
     year: '2023',
     role: 'UI設計 / デザインシステム構築',
     description:
-      'IoT関連プロダクトにおけるUIのデザインシステム構築を担当しました。',
-    description2:
-      'UIコンポーネントを整理し、開発者・デザイナー間で共通利用できるデザインルールを策定。実装フェーズを考慮したUI設計を行いました。',
-    skiles: 'Figma / Adobe XD',
+      'IoT関連プロダクトにおけるUIのデザインシステム構築を担当しました。UIコンポーネントを整理し、開発者・デザイナー間で共通利用できるデザインルールを策定。実装フェーズを考慮したUI設計を行いました。',
+    tags: ['Figma', 'Adobe XD'],
     image: ecpf,
   },
   {
@@ -34,57 +30,60 @@ const projects = [
     year: '2025',
     role: 'UI/UI設計',
     description:
-      '配送管理システムにおける/配送管理システムにおける地図表示画面のUI設計。',
-    description2:
-      '複数拠点・配送状況を把握できるよう、情報の優先度を整理したUI設計を実施',
-    skiles: 'Figma',
+      '配送管理システムにおける地図表示画面のUI設計。複数拠点・配送状況を把握できるよう、情報の優先度を整理したUI設計を実施しました。',
+    tags: ['Figma'],
     image: root,
   },
 ]
 </script>
 
 <template>
-  <section id="projects" class="py-32 bg-white border-t border-gray-100">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <FadeIn class="mb-16">
-        <h2 class="text-3xl md:text-4xl text-gray-900">実績</h2>
+  <section id="projects" class="bg-[#f8fafc] px-6 md:px-10 py-20">
+    <div class="max-w-[1360px] mx-auto flex flex-col gap-4">
+      <FadeIn class="flex flex-col gap-4">
+        <h2 class="text-4xl font-bold text-gray-900">実績</h2>
+        <p class="text-base leading-[26px] text-[#4a5565]">
+          管理画面、デザインシステム、地図UIまで、ユーザー目線の情報設計と実装の両方を通した制作事例
+        </p>
       </FadeIn>
 
-      <div class="space-y-16">
+      <div class="flex flex-col gap-8">
         <FadeIn
           v-for="(project, index) in projects"
           :key="project.title"
           :delay="index * 100"
-          class="border-b border-gray-100 pb-16 last:border-b-0"
+          class="bg-white border border-gray-200 rounded-3xl p-6 flex flex-col md:flex-row gap-6 shadow-[0_8px_12px_rgba(0,0,0,0.03)]"
         >
-          <div class="flex justify-between items-start mb-4">
-            <h3 class="text-2xl text-gray-900">{{ project.title }}</h3>
-            <span class="text-sm text-gray-500">{{ project.year }}</span>
-          </div>
-          <p class="text-sm text-gray-500 mb-4">{{ project.role }}</p>
-          <p class="text-gray-600 leading-relaxed max-w-2xl">
-            {{ project.description }}
-          </p>
-          <p class="text-gray-600 leading-relaxed mb-6 max-w-2xl">
-            {{ project.description2 }}
-          </p>
-          <p class="text-gray-600 leading-relaxed mb-6 max-w-2xl">
-            {{ project.skiles }}
-          </p>
-
-          <!-- 画像サイズを300pxに制限 -->
-          <div v-if="project.image" style="width: 300px; max-width: 100%">
-            <button
-              class="block w-full overflow-hidden rounded-lg border border-gray-200 transition-transform hover:scale-[1.02] active:scale-[0.98]"
-              style="cursor: pointer; background: none; padding: 0"
-              @click="modalImage = project.image"
+          <!-- 画像はクリックで拡大モーダルを開く -->
+          <button
+            v-if="project.image"
+            type="button"
+            class="block w-full md:w-[311px] h-[200px] shrink-0 overflow-hidden rounded-lg cursor-pointer p-0 bg-transparent transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            @click="modalImage = project.image"
+          >
+            <img
+              :src="project.image"
+              :alt="project.title"
+              class="w-full h-full object-cover object-top hover:opacity-90 transition-opacity"
             >
-              <img
-                :src="project.image"
-                :alt="project.title"
-                class="w-full h-auto block hover:opacity-90 transition-opacity"
+          </button>
+
+          <div class="flex flex-1 flex-col gap-6 min-w-0">
+            <div class="flex items-center justify-between">
+              <h3 class="text-2xl font-bold text-gray-900">{{ project.title }}</h3>
+              <span class="text-[13px] text-gray-500">{{ project.year }}</span>
+            </div>
+            <p class="text-sm leading-[22px] text-gray-500">{{ project.role }}</p>
+            <p class="leading-[26px] text-[#4a5565]">{{ project.description }}</p>
+            <ul class="flex flex-wrap gap-2">
+              <li
+                v-for="tag in project.tags"
+                :key="tag"
+                class="bg-gray-100 rounded-full px-3 py-2 text-xs text-gray-900"
               >
-            </button>
+                {{ tag }}
+              </li>
+            </ul>
           </div>
         </FadeIn>
       </div>

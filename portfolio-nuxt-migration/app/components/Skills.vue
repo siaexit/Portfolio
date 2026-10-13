@@ -1,71 +1,53 @@
 <script setup lang="ts">
+// Figma「Skills」の3グループ。tools は1行ずつ表示する。
 const skillCategories = [
   {
     title: 'UI・UX',
     years: '3年以上',
-    description: '要件整理からUI設計まで実装を前提としたデザインに対応します。',
-    points: [
-      '情報設計・画面設計',
-      'ユーザーフロー設計',
-      'デザインシステム構築・運用',
-    ],
-    tools: 'Figma / Adobe XD / Photoshop / Illustrator',
+    points: ['情報設計・画面設計', 'ユーザーフロー設計', 'デザインシステム構築・運用'],
+    tools: ['Figma / Adobe XD', 'Photoshop / Illustrator'],
   },
   {
     title: 'フロントエンド',
-    years: '5年以上',
-    description: '要件理解を踏まえた保守性・拡張性の高いUI実装が強みです。',
-    points: [
-      'React / Vue を用いたフロントエンド開発',
-      'コンポーネント設計・再利用設計',
-      'API連携・状態管理',
-    ],
-    tools: 'HTML / CSS / Sass / JavaScript',
+    years: '6年以上',
+    points: ['React / Vue による開発', 'コンポーネント設計・再利用設計', 'API連携・状態管理'],
+    tools: ['HTML / CSS / Sass / JavaScript'],
   },
   {
     title: 'バックエンド',
     years: '5年以上',
-    description: '小〜中規模案件を中心にフロントエンドと連動した開発が可能です。',
-    points: [
-      'Java / Spring を用いた開発',
-      'API設計',
-      'SQLによるデータ設計',
-      'フロントエンドとの仕様調整・連携実装',
-    ],
-    tools: '',
+    points: ['Java / Spring による開発', 'API設計・SQLによるデータ設計', '仕様調整・連携実装'],
+    tools: ['小〜中規模案件の開発に対応'],
   },
 ]
 </script>
 
 <template>
-  <section id="skills" class="py-32 bg-white border-t border-gray-100">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <FadeIn class="mb-16">
-        <h2 class="text-3xl md:text-4xl text-gray-900">スキル</h2>
+  <section id="skills" class="bg-white px-6 md:px-10 py-20">
+    <div class="max-w-[1360px] mx-auto flex flex-col gap-10">
+      <FadeIn class="flex flex-col gap-4">
+        <h2 class="text-[32px] font-bold text-[#202b30]">スキル</h2>
+        <p class="text-base text-[#4a5565]">実装を前提とした設計と、開発者との連携を強みに。</p>
       </FadeIn>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         <FadeIn
           v-for="(category, index) in skillCategories"
           :key="category.title"
           :delay="index * 100"
-          class="bg-white border border-gray-200 p-8 hover:border-gray-300 transition-colors"
+          class="border-t border-[#d8dedc] pt-6"
         >
-          <div class="flex justify-between items-start mb-6">
-            <h3 class="text-xl text-gray-900">{{ category.title }}</h3>
-            <span class="text-sm text-gray-500">{{ category.years }}</span>
+          <div class="flex justify-between items-baseline mb-4">
+            <h3 class="text-[22px] font-bold text-[#202b30]">{{ category.title }}</h3>
+            <span class="text-xs text-[#008575]">{{ category.years }}</span>
           </div>
-          <p class="text-gray-600 leading-relaxed text-sm mb-4">
-            {{ category.description }}
-          </p>
-          <ul class="space-y-2 mb-4">
-            <li v-for="point in category.points" :key="point" class="text-gray-600 text-sm flex items-start">
-              <span class="text-gray-400 mr-2">・</span>
-              <span>{{ point }}</span>
+          <ul class="flex flex-col gap-[10px] mb-4">
+            <li v-for="point in category.points" :key="point" class="text-sm leading-[1.8] text-[#526168]">
+              {{ point }}
             </li>
           </ul>
-          <p v-if="category.tools" class="text-gray-500 text-xs mt-4 pt-4 border-t border-gray-100">
-            {{ category.tools }}
+          <p v-for="tool in category.tools" :key="tool" class="text-xs leading-[1.9] text-[#7b878b]">
+            {{ tool }}
           </p>
         </FadeIn>
       </div>

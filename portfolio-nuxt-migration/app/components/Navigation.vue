@@ -12,6 +12,7 @@ onMounted(() => window.addEventListener('scroll', handleScroll))
 onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 const navItems = [
+  { label: 'ホーム', href: '#home' },
   { label: 'スキル', href: '#skills' },
   { label: '実績', href: '#projects' },
   { label: '経歴', href: '#experience' },
@@ -28,22 +29,31 @@ function scrollToSection(href: string) {
 
 <template>
   <nav
-    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-    :class="isScrolled ? 'bg-white/80 backdrop-blur-md border-b border-gray-100' : 'bg-white'"
+    class="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 transition-all duration-300"
+    :class="isScrolled ? 'bg-[#faf9f5]/80 backdrop-blur-md' : 'bg-[#faf9f5]'"
   >
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="#home" class="text-gray-900 text-sm" @click.prevent="scrollToSection('#home')">
-          出口 史亜
+    <div class="max-w-[1440px] mx-auto px-6 md:px-8">
+      <div class="flex justify-between items-center h-[88px]">
+        <a href="#home" class="flex items-center gap-3" @click.prevent="scrollToSection('#home')">
+          <span
+            class="w-10 h-10 rounded-full bg-gray-900 text-white text-sm font-bold flex items-center justify-center"
+          >
+            S
+          </span>
+          <span class="flex flex-col">
+            <span class="text-lg font-bold text-gray-900">出口 史亜</span>
+            <span class="text-[13px] text-gray-500">UI/UX Designer</span>
+          </span>
         </a>
 
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex space-x-8">
+        <div class="hidden md:flex gap-8">
           <a
             v-for="item in navItems"
             :key="item.href"
             :href="item.href"
-            class="text-gray-600 hover:text-gray-900 transition-colors text-sm"
+            class="text-[#4a5565] hover:text-[#008575] transition-colors text-sm"
+            :class="{ 'font-semibold !text-[#008575]': item.href === '#home' }"
             @click.prevent="scrollToSection(item.href)"
           >
             {{ item.label }}
@@ -57,7 +67,7 @@ function scrollToSection(href: string) {
       </div>
 
       <!-- Mobile Navigation -->
-      <div v-if="isMobileMenuOpen" class="md:hidden pb-4 border-t border-gray-100 pt-4">
+      <div v-if="isMobileMenuOpen" class="md:hidden pb-4 border-t border-gray-200 pt-4">
         <a
           v-for="item in navItems"
           :key="item.href"
